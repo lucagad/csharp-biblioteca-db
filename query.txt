@@ -24,7 +24,9 @@ insert into books (id, title, "year", available, code, shelf, author_id, number_
 values (2,'Titolo Libro 2',2022,'0','1000002','2A',2,350);
 
 
-// BOZZA DVD
-DVD DVD1 = new DVD(120, "2000001", "Titolo DVD 1", 2020, "Fantasy", true, 1, "Regista 1");
-DVD DVD2 = new DVD(180, "2000002", "Titolo DVD 2", 2020, "Thriller", false, 2, "Regista 2");
-listaDVD.Add(DVD1);
+//DVD
+insert into dvds (id, title, "year", available, code, shelf, author_id, running_time)
+values (1,'Titolo DVD 1',2021,1,'2000001','3A',1,120);
+
+insert into dvds (id, title, "year", available, code, shelf, author_id, running_time)
+values (2,'Titolo DVD 2',2022,0,'2000002','3B',2,150);

@@ -20,14 +20,14 @@ switch (scelta)
             StampaLibri();
         break;
     #endregion
-    /*
+    
     //Stampare Lista DVD
     case 3:
         #region
             StampaDVD();
         break;
     #endregion
-
+    /*
     //Prendi in prestito un prodotto
     case 4:
 
@@ -109,7 +109,6 @@ switch (scelta)
 }
 
 // Stampa tutti i Libri del "DB"
-
 void StampaLibri()
 {
     try
@@ -155,7 +154,6 @@ void StampaLibri()
     }
 }
 
-/*
 // Stampa tutti i Libri del "DB"
 /*
 void CercaLibro(int tipoRicerca , string chiaveRicerca)
@@ -219,28 +217,51 @@ void CercaLibro(int tipoRicerca , string chiaveRicerca)
 */
 
 // Stampa tutti i DVD del "DB"
-/*
+
 void StampaDVD()
 {
-    Console.WriteLine("------------");
-    Console.WriteLine("--- LISTA DEI DVD ---");
-
-    foreach (var dvd in listaDVD)
+    try
     {
-        Console.WriteLine(" ");
-        Console.WriteLine("------------");
-        Console.WriteLine("TITOLO: " + dvd.Titolo);
-        Console.WriteLine("AUTORE: " + dvd.Autore);
-        Console.WriteLine("GENERE: " + dvd.Settore);
-        Console.WriteLine("ANNO: " + dvd.Anno);
-        Console.WriteLine("DURATA: " + dvd.Durata + " Minuti");
-        Console.WriteLine("SCAFFALE: " + dvd.Scaffale);
-        if (dvd.EDisponibile == true) { Console.WriteLine("DISPONIBILE: SI"); }
-        else Console.WriteLine("DISPONIBILE: NO");
-        Console.WriteLine("------------");
+        connessioneSq1.Open();
+        
+    } catch (Exception ex)
+    {
+        Console.WriteLine(ex.ToString());
+    } 
+    finally {
+        connessioneSq1.Close();
+    }
+
+    using (SqlConnection connessioneSql = new SqlConnection(stringaDiConnessione))
+    {
+        try
+        {
+            Console.WriteLine("------------");
+            Console.WriteLine("--- LISTA DEI DVD ---");
+            connessioneSql.Open();
+            // dichiaro la query da eseguire
+            string query = "SELECT id,title,year FROM dvds";
+            // creo il comando ed eseguo la query
+            using (SqlCommand cmd = new SqlCommand(query, connessioneSql))
+            using (SqlDataReader reader = cmd.ExecuteReader())
+                while (reader.Read())
+                {
+                    ReadSingleRow((IDataRecord)reader);
+                }
+            Console.WriteLine("------------");
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
+
+    static void ReadSingleRow(IDataRecord dataRecord)
+    {
+        Console.WriteLine(String.Format("{0} | {1} ({2})", dataRecord[0], dataRecord[1],dataRecord[2]));
     }
 }
-*/
 
 // Stampa tutti gli utenti registrati
 void StampaUtenti()
