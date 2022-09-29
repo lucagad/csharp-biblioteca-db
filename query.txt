@@ -30,3 +30,27 @@ values (1,'Titolo DVD 1',2021,1,'2000001','3A',1,120);
 
 insert into dvds (id, title, "year", available, code, shelf, author_id, running_time)
 values (2,'Titolo DVD 2',2022,0,'2000002','3B',2,150);
+
+
+//CATEGORIE
+insert into categories (id, name)
+values (1,'Thriller')
+
+insert into categories (id, name)
+values (2,'Fantasy')
+
+insert into categories (id, name)
+values (3,'Azione')
+
+//CATEGORIE/DVD
+insert into category_dvd (id, category_id, dvd_id)
+values (1,2,2);
+
+insert into category_dvd (id, category_id, dvd_id)
+values (2,3,2);
+
+insert into category_dvd (id, category_id, dvd_id)
+values (3,1,1);
+
+insert into category_dvd (id, category_id, dvd_id)
+values (4,2,1);

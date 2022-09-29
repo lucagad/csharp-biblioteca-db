@@ -240,7 +240,10 @@ void StampaDVD()
             Console.WriteLine("--- LISTA DEI DVD ---");
             connessioneSql.Open();
             // dichiaro la query da eseguire
-            string query = "SELECT id,title,year FROM dvds";
+            string query = "SELECT dvds.id, dvds.title, dvds.year, categories.name " + 
+                           "FROM dvds , categories, category_dvd " +
+                           "INNER JOIN categories c on c.id = category_dvd.category_id " +
+                           "INNER JOIN dvds d on d.id = category_dvd.dvd_id";
             // creo il comando ed eseguo la query
             using (SqlCommand cmd = new SqlCommand(query, connessioneSql))
             using (SqlDataReader reader = cmd.ExecuteReader())
@@ -259,7 +262,7 @@ void StampaDVD()
 
     static void ReadSingleRow(IDataRecord dataRecord)
     {
-        Console.WriteLine(String.Format("{0} | {1} ({2})", dataRecord[0], dataRecord[1],dataRecord[2]));
+        Console.WriteLine(String.Format("{0} | {1} ({2}) | {3} ", dataRecord[0], dataRecord[1],dataRecord[2],dataRecord[3]));
     }
 }
 
