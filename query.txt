@@ -1,0 +1,30 @@
+// UTENTI
+
+insert into users (id,name, surname, email, password, telephone)
+values (1,'Mario','Rossi','Mario.rossi@gmail.com','12345678',0567888)
+
+insert into users (id,name, surname, email, password, telephone)
+values (2,'Paolo','Rossi','Paolo.rossi@gmail.com','12345678',0567888)
+
+insert into users (id,name, surname, email, password, telephone)
+values (3,'Mario','Bianchi','Mario.bianchi@gmail.com','12345678',0567888)
+
+//AUTORI
+insert into authors (id, name, surname)
+values (1,'J.K.','Rowling');
+
+insert into authors (id, name, surname)
+values (2,'J.R.R.','Tolkien');
+
+//LIBRI
+insert into books (id, title, "year", available, code, shelf, author_id, number_of_pages)
+values (1,'Titolo Libro 1',2021,'1','1000001','1A',1,200);
+
+insert into books (id, title, "year", available, code, shelf, author_id, number_of_pages)
+values (2,'Titolo Libro 2',2022,'0','1000002','2A',2,350);
+
+
+// BOZZA DVD
+DVD DVD1 = new DVD(120, "2000001", "Titolo DVD 1", 2020, "Fantasy", true, 1, "Regista 1");
+DVD DVD2 = new DVD(180, "2000002", "Titolo DVD 2", 2020, "Thriller", false, 2, "Regista 2");
+listaDVD.Add(DVD1);

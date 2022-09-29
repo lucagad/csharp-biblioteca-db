@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "1JMg26jRacQHTTlcFTCFeibqOYqt2CHyU/ePis7uDjuT9JNgbkPLlFz0ldiidG+Y4Z3q9tQuXwxTRWPItx7u1Q==",
+  "dgSpecHash": "NBwezJK9RqJTA7W8Zwyo1pDnFwwpbjk+j2pHXPuXO83ss0oz/9RWFV8OozyXPw4CPaok3OE//h0grVEMZ44qpQ==",
   "success": true,
   "projectFilePath": "/Users/lucagaddini/Desktop/Boolean Carrers/001 Corso .NET Experis/001 Progetti C#/csharp-biblioteca-db/csharp-biblioteca-db.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/lucagaddini/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "/Users/lucagaddini/.nuget/packages/microsoft.win32.registry/4.7.0/microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "/Users/lucagaddini/.nuget/packages/runtime.native.system.data.sqlclient.sni/4.7.0/runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "/Users/lucagaddini/.nuget/packages/runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "/Users/lucagaddini/.nuget/packages/runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "/Users/lucagaddini/.nuget/packages/runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "/Users/lucagaddini/.nuget/packages/system.data.sqlclient/4.8.3/system.data.sqlclient.4.8.3.nupkg.sha512",
+    "/Users/lucagaddini/.nuget/packages/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "/Users/lucagaddini/.nuget/packages/system.security.principal.windows/4.7.0/system.security.principal.windows.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
