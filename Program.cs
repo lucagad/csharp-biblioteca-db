@@ -1,46 +1,7 @@
-
-
 using System.Data;
 using System.Data.SqlClient;
 string stringaDiConnessione = "Data Source=localhost;Initial Catalog=db_biblioteca;Persist Security Info=True;User ID=sa;Password=NET2022!";
 SqlConnection connessioneSq1 = new SqlConnection(stringaDiConnessione);
-
-try
-{
-    connessioneSq1.Open();
-} catch (Exception ex)
-{
-    Console.WriteLine(ex.ToString());
-} 
-finally {
-    connessioneSq1.Close();
-}
-
-using (SqlConnection connessioneSql = new SqlConnection(stringaDiConnessione))
-{
-    try
-    {
-        connessioneSql.Open();
-        // dichiaro la query da eseguire
-        string query = "SELECT *  FROM categories";
-        // creo il comando ed eseguo la query
-        using (SqlCommand cmd = new SqlCommand(query, connessioneSql))
-        using (SqlDataReader reader = cmd.ExecuteReader())
-            while (reader.Read())
-            {
-                ReadSingleRow((IDataRecord)reader);
-            }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.ToString());
-    }
-}
-
-static void ReadSingleRow(IDataRecord dataRecord)
-{
-    Console.WriteLine(String.Format("{0} - {1}", dataRecord[0], dataRecord[1]));
-}
 
 int scelta = MenuIniziale();
 
@@ -53,7 +14,7 @@ switch (scelta)
         break;
     #endregion
 
-    // Stampare Lista Libri
+    /*// Stampare Lista Libri
     case 2:
         #region
             StampaLibri();
@@ -140,7 +101,7 @@ switch (scelta)
             }
         }
 
-        break;
+        break;*/
 
     default:
         Console.WriteLine("Scelta non prevista!");
@@ -148,6 +109,7 @@ switch (scelta)
 }
 
 // Stampa tutti i Libri del "DB"
+/*
 void StampaLibri()
 {
     Console.WriteLine("------------");
@@ -169,8 +131,10 @@ void StampaLibri()
         Console.WriteLine("------------");
     }
 }
+*/
 
 // Stampa tutti i Libri del "DB"
+/*
 void CercaLibro(int tipoRicerca , string chiaveRicerca)
 {
     Console.WriteLine("------------");
@@ -229,8 +193,10 @@ void CercaLibro(int tipoRicerca , string chiaveRicerca)
     }
     
 }
+*/
 
 // Stampa tutti i DVD del "DB"
+/*
 void StampaDVD()
 {
     Console.WriteLine("------------");
@@ -251,21 +217,51 @@ void StampaDVD()
         Console.WriteLine("------------");
     }
 }
+*/
 
 // Stampa tutti gli utenti registrati
 void StampaUtenti()
 {
-    Console.WriteLine("------------");
-    Console.WriteLine("--- LISTA DEGLI UTENTI ---");
-
-    foreach (var utente in listaIscritti)
+    try
     {
-        Console.WriteLine(" ");
-        Console.WriteLine("------------");
-        Console.WriteLine("NOME: " + utente.Nome);
-        Console.WriteLine("COGNOME: " + utente.Cognome);
-        Console.WriteLine("EMAIL: " + utente.Email);
-        Console.WriteLine("------------");
+        connessioneSq1.Open();
+        
+    } catch (Exception ex)
+    {
+        Console.WriteLine(ex.ToString());
+    } 
+    finally {
+        connessioneSq1.Close();
+    }
+
+    using (SqlConnection connessioneSql = new SqlConnection(stringaDiConnessione))
+    {
+        try
+        {
+            Console.WriteLine("------------");
+            Console.WriteLine("--- LISTA DEGLI UTENTI ---");
+            connessioneSql.Open();
+            // dichiaro la query da eseguire
+            string query = "SELECT id,name,surname FROM users";
+            // creo il comando ed eseguo la query
+            using (SqlCommand cmd = new SqlCommand(query, connessioneSql))
+            using (SqlDataReader reader = cmd.ExecuteReader())
+                while (reader.Read())
+                {
+                    ReadSingleRow((IDataRecord)reader);
+                }
+            Console.WriteLine("------------");
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
+
+    static void ReadSingleRow(IDataRecord dataRecord)
+    {
+        Console.WriteLine(String.Format("{0} | {1} {2}", dataRecord[0], dataRecord[1],dataRecord[2]));
     }
 }
 
@@ -285,6 +281,7 @@ int MenuIniziale()
 }
 
 // Scelta su che tipo di prodotto prendere in prestito Libro/DVD
+/*
 int MenuTipoPrestito()
 {
     Console.WriteLine("Cosa vuoi prendere in prestito?");
@@ -295,8 +292,11 @@ int MenuTipoPrestito()
 
     return sceltaMenuPrestito;
 }
+*/
 
 // Scelta su come ricercare il prodotto Nome/Codice
+
+/*
 int MenuRicercaProdotto()
 {
     Console.WriteLine(" ");
@@ -310,9 +310,10 @@ int MenuRicercaProdotto()
     return sceltaTipoRicerca;
 
 }
+*/
 
 // Inseritmento Nome/Codice
-string InserimentoNomeCodice()
+/*string InserimentoNomeCodice()
 {
     Console.WriteLine(" ");
     Console.WriteLine("------------");
@@ -322,4 +323,4 @@ string InserimentoNomeCodice()
 
     return chiaveinserita;
 
-}
+}*/
