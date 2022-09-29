@@ -240,7 +240,7 @@ void StampaDVD()
             Console.WriteLine("--- LISTA DEI DVD ---");
             connessioneSql.Open();
             // dichiaro la query da eseguire
-            string query = "SELECT dvds.id, dvds.title, dvds.year, categories.name " + 
+            string query = "SELECT DISTINCT dvds.id, dvds.title, dvds.year, categories.name " + 
                            "FROM dvds , categories, category_dvd " +
                            "INNER JOIN categories c on c.id = category_dvd.category_id " +
                            "INNER JOIN dvds d on d.id = category_dvd.dvd_id";
