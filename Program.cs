@@ -14,13 +14,13 @@ switch (scelta)
         break;
     #endregion
 
-    /*// Stampare Lista Libri
+    // Stampare Lista Libri
     case 2:
         #region
             StampaLibri();
         break;
     #endregion
-
+    /*
     //Stampare Lista DVD
     case 3:
         #region
@@ -109,30 +109,53 @@ switch (scelta)
 }
 
 // Stampa tutti i Libri del "DB"
-/*
+
 void StampaLibri()
 {
-    Console.WriteLine("------------");
-    Console.WriteLine("--- LISTA DEI LIBRI ---");
-
-
-    foreach (var libro in listaLibri)
+    try
     {
-        Console.WriteLine(" ");
-        Console.WriteLine("------------");
-        Console.WriteLine("TITOLO: " + libro.Titolo);
-        Console.WriteLine("AUTORE: " + libro.Autore);
-        Console.WriteLine("GENERE: " + libro.Settore);
-        Console.WriteLine("ANNO: " + libro.Anno);
-        Console.WriteLine("PAGINE: " + libro.Pagine);
-        Console.WriteLine("SCAFFALE: " + libro.Scaffale);
-        if (libro.EDisponibile == true) { Console.WriteLine("DISPONIBILE: SI"); }
-        else Console.WriteLine("DISPONIBILE: NO");
-        Console.WriteLine("------------");
+        connessioneSq1.Open();
+        
+    } catch (Exception ex)
+    {
+        Console.WriteLine(ex.ToString());
+    } 
+    finally {
+        connessioneSq1.Close();
+    }
+
+    using (SqlConnection connessioneSql = new SqlConnection(stringaDiConnessione))
+    {
+        try
+        {
+            Console.WriteLine("------------");
+            Console.WriteLine("--- LISTA DEI LIBRI ---");
+            connessioneSql.Open();
+            // dichiaro la query da eseguire
+            string query = "SELECT id,title,year FROM books";
+            // creo il comando ed eseguo la query
+            using (SqlCommand cmd = new SqlCommand(query, connessioneSql))
+            using (SqlDataReader reader = cmd.ExecuteReader())
+                while (reader.Read())
+                {
+                    ReadSingleRow((IDataRecord)reader);
+                }
+            Console.WriteLine("------------");
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
+
+    static void ReadSingleRow(IDataRecord dataRecord)
+    {
+        Console.WriteLine(String.Format("{0} | {1} ({2})", dataRecord[0], dataRecord[1],dataRecord[2]));
     }
 }
-*/
 
+/*
 // Stampa tutti i Libri del "DB"
 /*
 void CercaLibro(int tipoRicerca , string chiaveRicerca)
